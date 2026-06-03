@@ -3,8 +3,22 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "Portfolio Professionnel 2026",
-  description: "Portfolio haut de gamme développé avec Next.js et Tailwind CSS",
+  title: "Yann Cretin | Développeur Full Stack & Admin Système (L3 Informatique)",
+  description: "Portfolio professionnel de Yann Cretin, développeur Full Stack (Next.js, TS) et administrateur systèmes (Active Directory, Linux, AWS). À la recherche d'une alternance pour septembre 2026.",
+  keywords: ["Yann Cretin", "Développeur Full Stack", "Next.js", "TypeScript", "Tailwind CSS", "Active Directory", "Alternance Informatique 2026", "Paris"],
+  authors: [{ name: "Yann Cretin" }],
+  creator: "Yann Cretin",
+  // L'objet OpenGraph configure l'aperçu pour LinkedIn, Twitter, etc.
+  openGraph: {
+    title: "Yann Cretin | Portfolio Professionnel 2026",
+    description: "Découvrez mes projets de développement web modernes et mes réalisations en administration systèmes.",
+    url: "https://votre-futur-nom-de-domaine.com", // On le mettra à jour à l'étape finale Vercel
+    siteName: "Yann Cretin Portfolio",
+    locale: "fr_FR",
+    type: "website",
+  },
+  // Bloque le zoom automatique affreux sur certains mobiles quand on clique sur un input
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
 export default function RootLayout({
