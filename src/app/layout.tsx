@@ -17,9 +17,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     type: "website",
   },
-  // Bloque le zoom automatique affreux sur certains mobiles quand on clique sur un input
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-};
+  };
 
 export default function RootLayout({
   children,

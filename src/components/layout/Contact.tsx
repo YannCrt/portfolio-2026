@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,11 +22,31 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulation d'un envoi d'API (nous connecterons un vrai service au moment du déploiement)
+    // Préparation de l'objet à envoyer à l'API de Web3Forms
+    const payload = {
+      ...formData,
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+      subject: "Nouveau message depuis ton Portfolio !",
+    };
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' }); // Reset du formulaire
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -56,6 +77,25 @@ export default function Contact() {
             <p>📍 Paris 12ème, France</p>
             <p>✉️ Cretinyann@gmail.com</p>
             <p>📞 +33 6 72 39 71 27</p>
+            <a
+  href="https://github.com/YannCrt"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 hover:text-white transition-colors"
+>
+  <FaGithub size={16} />
+  <span>GitHub</span>
+</a>
+
+<a
+  href="https://www.linkedin.com/in/yann-cretin-8a7492302/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 hover:text-white transition-colors"
+>
+  <FaLinkedin size={16} />
+  <span>LinkedIn</span>
+</a>
           </div>
         </div>
 
